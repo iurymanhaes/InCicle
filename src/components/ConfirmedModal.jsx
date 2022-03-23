@@ -28,7 +28,12 @@ const ConfirmedModal = (props) => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  let count = [];
+  props.confirmed.map((cfmd, i) => {
+    if(props.confirmed[i].confirmed_presence){
+      count.push(props.confirmed[i].confirmed_presence)
+    }
+  });
   return (
     <>
       <span>|</span>
@@ -47,8 +52,8 @@ const ConfirmedModal = (props) => {
         }}
       >
         {props.confirmed.length > 1
-          ? `${props.confirmed.length} confirmados de 15`
-          : `${props.confirmed.length} confirmado de 15`}
+          ? `${count.length} confirmados de ${props.confirmed.length}`
+          : `${count.length} confirmado de ${props.confirmed.length}`}
       </Link>
 
       <Modal
